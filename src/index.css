@@ -4,3 +4,14 @@
 @theme {
     --font-bebas: "Bebas Neue", sans-serif;
 }
+
+@layer utilities {
+  .text-shadow-3d {
+    text-shadow: 1px 1px 0 #000,
+                 2px 2px 0 #000,
+                 3px 3px 0 #000,
+                 4px 4px 0 #000,
+                 5px 5px 0 #000,
+                 6px 6px 0 #000;
+  }
+}

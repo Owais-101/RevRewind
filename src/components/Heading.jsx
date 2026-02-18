@@ -1,6 +1,5 @@
 import React from 'react'
 import { motion } from 'motion/react'
-import { animate, delay } from 'motion';
 
 const Heading = () => {
 
@@ -18,19 +17,32 @@ const Heading = () => {
             opacity: 1,
             y: 0,
             transition: {
-                delay: 0.05 * index
+                delay: 0.08 * index
             }
         })
 
-    }
+    };
+
+    //Motion variant for the div holding subHeading
+    const popUpAnimationVariant = {
+        initial: {
+            opacity: 0,
+            y: 40
+        },
+        animate: {
+            opacity: 1,
+            y: 1,
+            transition: {
+                delay: 0.5
+            }
+        }
+    };
 
     return (
-
         // Main Heading and Container Div
         <div className='flex flex-col items-center '>
 
             {/* Main Heading  */}
-            {/* Main Heading - REV + REWIND */}
             <div className='flex'>
                 {heading.split("").map((char, idx) => (
                     <motion.h1
@@ -39,7 +51,8 @@ const Heading = () => {
                         animate={"animate"}
                         custom={idx}
                         key={idx}
-                        className='text-5xl md:text-7xl lg:text-8xl text-red-500 font-bebas font-bold uppercase tracking-wider [text-shadow:1px_1px_0_black,2px_2px_0_black,3px_3px_0_black,4px_4px_0_black,5px_5px_10px_rgba(0,0,0,1)]'
+                        className="text-5xl md:text-7xl lg:text-8xl text-[#F6C515] font-bebas font-bold uppercase tracking-wider text-shadow-3d"
+
                     >
                         {char}
                     </motion.h1>
@@ -47,20 +60,24 @@ const Heading = () => {
             </div>
 
             {/* Sub-Heading */}
-            <div className='flex mt-4'>
+            <motion.div
+                variants={popUpAnimationVariant}
+                initial={'initial'}
+                animate={'animate'}
+                className='flex mt-4 border-2 shadow-[6px_6px_0px_0px_#000000] px-5 py-4'>
                 {subHeading.split("").map((char, idx) => (
                     <motion.h2
                         variants={fadeInAnimationVariant}
                         initial={"initial"}
                         animate={"animate"}
-                        custom={idx + heading.length} // Better delay calculation
-                        className='text-sm md:text-lg lg:text-2xl font-semibold tracking-wide '
+                        custom={idx + heading.length}
+                        className='text-sm md:text-lg lg:text-2xl text-white font-semibold tracking-widest font-bebas text-shadow-3d'
                         key={idx}
                     >
                         {char === " " ? "\u00A0" : char}
                     </motion.h2>
                 ))}
-            </div>
+            </motion.div>
 
         </div>
     )

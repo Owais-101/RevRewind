@@ -3,9 +3,9 @@ import Heading from './components/Heading'
 
 const App = () => {
   return (
-    <div className='h-screen w-full bg-gray-500 flex justify-center items-center'>
+    <div className='h-screen w-full bg-[#0E5F5B] flex justify-center items-center'>
 
-      <Heading />
+        <Heading />
 
     </div>
   )
