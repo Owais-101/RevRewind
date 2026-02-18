@@ -1,11 +1,12 @@
 import React from 'react'
-import Heading from './components/Heading'
+import LandingPage from './pages/LandingPage'
+
 
 const App = () => {
   return (
-    <div className='h-screen w-full bg-[#0E5F5B] flex justify-center items-center'>
+    <div>
 
-        <Heading />
+      <LandingPage />
 
     </div>
   )

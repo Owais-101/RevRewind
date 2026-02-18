@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'motion/react'
+import { PiRewindLight } from "react-icons/pi";
+
 
 const Heading = () => {
 
-    const heading = "RevRewind";
+    const heading1 = "Rev";
+    const heading2 = "Rewind"
     const subHeading = "Relive Every Kilometer";
+    const [showDivider, setShowDivider] = useState(false);
 
     // Motion variant for both heading and subheading(extra delay) 
     const fadeInAnimationVariant = {
@@ -17,7 +21,7 @@ const Heading = () => {
             opacity: 1,
             y: 0,
             transition: {
-                delay: 0.08 * index
+                delay: 0.05 * index
             }
         })
 
@@ -44,15 +48,43 @@ const Heading = () => {
 
             {/* Main Heading  */}
             <div className='flex'>
-                {heading.split("").map((char, idx) => (
+                {heading1.split("").map((char, idx) => (
                     <motion.h1
                         variants={fadeInAnimationVariant}
                         initial={"initial"}
                         animate={"animate"}
                         custom={idx}
                         key={idx}
-                        className="text-5xl md:text-7xl lg:text-8xl text-[#F6C515] font-bebas font-bold uppercase tracking-wider text-shadow-3d"
+                        // trigger on last char of "Rev"
 
+                        className="text-5xl md:text-7xl lg:text-8xl text-[#F6C515] font-bebas font-bold uppercase tracking-wider text-shadow-3d"
+                    >
+                        {char}
+                    </motion.h1>
+                ))}
+
+                {/* Divider that appears after Rev finishes */}
+                {showDivider && (
+                    <motion.div
+                        initial={{ opacity: 0, scaleX: 0 }}
+                        animate={{ opacity: 1, scaleX: 1 }}
+                        transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                        style={{ transformOrigin: "left" }}
+                        className='bg-yellow-400 mx-2 rounded-lg flex justify-center items-center px-2 h-12 md:h-16 lg:h-20 shadow-[6px_6px_0px_0px_#000000]'
+                    >
+                        <PiRewindLight className='text-4xl md:text-5xl lg:text-7xl text-bl ' />
+                    </motion.div>
+                )}
+                {/* Rewind */}
+                {heading2.split("").map((char, idx) => (
+                    <motion.h1
+                        variants={fadeInAnimationVariant}
+                        initial={"initial"}
+                        animate={"animate"}
+                        custom={idx + heading1.length}
+                        onAnimationComplete={idx === heading2.length - 1 ? () => setShowDivider(true) : undefined}
+                        key={idx}
+                        className="text-5xl md:text-7xl lg:text-8xl text-[#F6C515] font-bebas font-bold uppercase tracking-wider text-shadow-3d"
                     >
                         {char}
                     </motion.h1>
@@ -70,7 +102,7 @@ const Heading = () => {
                         variants={fadeInAnimationVariant}
                         initial={"initial"}
                         animate={"animate"}
-                        custom={idx + heading.length}
+                        custom={idx + (heading1.length + heading2.length)}
                         className='text-sm md:text-lg lg:text-2xl text-white font-semibold tracking-widest font-bebas text-shadow-3d'
                         key={idx}
                     >
