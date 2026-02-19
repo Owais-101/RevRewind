@@ -68,7 +68,7 @@ const Heading = () => {
                     <motion.div
                         initial={{ opacity: 0, scaleX: 0 }}
                         animate={{ opacity: 1, scaleX: 1 }}
-                        transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                        transition={{ type: "spring", stiffness: 100, damping: 20, ease:"easeInOut" }}
                         style={{ transformOrigin: "left" }}
                         className='bg-yellow-400 mx-2 rounded-lg flex justify-center items-center px-2 h-12 md:h-16 lg:h-20 shadow-[6px_6px_0px_0px_#000000]'
                     >

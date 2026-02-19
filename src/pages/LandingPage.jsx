@@ -1,16 +1,24 @@
 import React from 'react'
 import Heading from '../components/Heading'
 import Button from '../components/Button'
-import Circle from '../components/Circle'
+import Smiley from '../components/Smiley'
 
 const LandingPage = () => {
+
+
     return (
-        <main className=' relative h-screen w-full bg-[#0E5F5B] flex flex-col justify-center items-center'>
-            <Heading />
-            <div className='mt-36'>
-                <Button />
-            </div>
-        </main>
+        <>
+            <main className=' relative h-screen w-full bg-[#0E5F5B] flex flex-col justify-center items-center'>
+                <Heading />
+                <div className='mt-20 sm:mt-24 md:mt-28 lg:mt-32'>
+                    <Button />
+                </div>
+            </main>
+
+            {/* Image*/}
+            <Smiley directionOne={"left"} directionTwo={"top"} />
+
+        </>
     )
 }
 
