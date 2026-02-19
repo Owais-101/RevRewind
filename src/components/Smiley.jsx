@@ -54,26 +54,3 @@ const Smiley = ({directionOne , directionTwo}) => {
 export default Smiley
 
 
-// {/* <motion.div
-//                 variants={popupVariants}
-//                 initial="hidden"
-//                 animate="visible"
-//                 className='absolute 
-    
-//     /* Laptop ya smaller: BOTTOM MIDDLE */
-//     left-1/2 bottom-6 -translate-x-1/2
-//     sm:left-1/2 sm:bottom-8 sm:-translate-x-1/2
-//     md:left-1/2 md:bottom-10 md:-translate-x-1/2
-    
-//     /* Sirf XL+ pe right-bottom */
-//     lg:right-20 lg:bottom-20 lg:left-auto lg:translate-x-0
-    
-//      w-44 h-36      /* Mobile: 48px circle */
-//     sm:w-52 sm:h-44 /* Tablet: 56px circle */
-//     md:w-64 md:h-5w-52 /* MD: 80px circle */
-//     lg:w-72 lg:h-60 /* LG: 288x208px rect */
-    
-//     flex justify-center items-center rounded-full'
-//             >
-//                 <img src={smiley} className='w-full h-full object-cover rounded-full sm:mt-15' alt="" />
-//             </motion.div> */}

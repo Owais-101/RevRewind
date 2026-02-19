@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
+
+
 
 @theme {
   /* PRIMARY FONT */
@@ -8,9 +11,11 @@
 
   /* SECONDARY FONT */
   --font-barlow: "Barlow", sans-serif;
+  --font-sans: "Outfit", sans-serif;
 
   /* TEXT COLORS */
   --color-text-primary: #F6C515;
+  --color-text-secondary: #05201f;
 
   /* PRIMARY BACKGROUND COLOR */
   --color-bg-primary: #0E5F5B;

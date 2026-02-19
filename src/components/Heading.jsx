@@ -1,31 +1,21 @@
 import React, { useState } from 'react'
 import { motion } from 'motion/react'
 import { PiRewindLight } from "react-icons/pi";
+import useAnimationVariants from '../hooks/useAnimationVariants';
+
+
 
 
 const Heading = () => {
+
+    const { fadeInAnimationVariant } = useAnimationVariants();
 
     const heading1 = "Rev";
     const heading2 = "Rewind"
     const subHeading = "Relive Every Kilometer";
     const [showDivider, setShowDivider] = useState(false);
 
-    // Motion variant for both heading and subheading(extra delay) 
-    const fadeInAnimationVariant = {
-        initial: {
-            opacity: 0,
-            y: 100
-        },
 
-        animate: (index) => ({
-            opacity: 1,
-            y: 0,
-            transition: {
-                delay: 0.05 * index
-            }
-        })
-
-    };
 
     //Motion variant for the div holding subHeading
     const popUpAnimationVariant = {
@@ -53,7 +43,7 @@ const Heading = () => {
                     <motion.h1
                         variants={fadeInAnimationVariant}
                         initial={"initial"}
-                        animate={"animate"}
+                        whileInView="whileInView"
                         custom={idx}
                         key={idx}
                         className="text-5xl md:text-7xl lg:text-8xl text-text-primary font-bebas font-bold uppercase tracking-wider text-shadow-3d"
@@ -67,7 +57,7 @@ const Heading = () => {
                     <motion.div
                         initial={{ opacity: 0, scaleX: 0 }}
                         animate={{ opacity: 1, scaleX: 1 }}
-                        transition={{ type: "spring", stiffness: 100, damping: 20, ease:"easeInOut" }}
+                        transition={{ type: "spring", stiffness: 100, damping: 20, ease: "easeInOut" }}
                         style={{ transformOrigin: "left" }}
                         className='bg-yellow-400 mx-2 rounded-lg flex justify-center items-center px-2 h-12 md:h-16 lg:h-20 shadow-[6px_6px_0px_0px_#000000]'
                     >
@@ -79,7 +69,7 @@ const Heading = () => {
                     <motion.h1
                         variants={fadeInAnimationVariant}
                         initial={"initial"}
-                        animate={"animate"}
+                        whileInView="whileInView"
                         custom={idx + heading1.length}
                         onAnimationComplete={idx === heading2.length - 1 ? () => setShowDivider(true) : undefined}
                         key={idx}
@@ -95,12 +85,12 @@ const Heading = () => {
                 variants={popUpAnimationVariant}
                 initial={'initial'}
                 animate={'animate'}
-                className='relative bg-amber-300 flex mt-4 border-2 shadow-[6px_6px_0px_0px_#000000] px-5 py-4'>
+                className='relative flex mt-4 border-2 shadow-[6px_6px_0px_0px_#000000] px-5 py-4'>
                 {subHeading.split("").map((char, idx) => (
                     <motion.h2
                         variants={fadeInAnimationVariant}
                         initial={"initial"}
-                        animate={"animate"}
+                        whileInView="whileInView"
                         custom={idx + (heading1.length + heading2.length)}
                         className='text-sm md:text-lg lg:text-2xl text-white font-semibold tracking-widest font-bebas text-shadow-3d'
                         key={idx}
@@ -109,8 +99,6 @@ const Heading = () => {
                     </motion.h2>
                 ))}
             </motion.div>
-
-
 
         </div>
     )
