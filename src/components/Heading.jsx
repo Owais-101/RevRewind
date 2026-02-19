@@ -47,7 +47,8 @@ const Heading = () => {
         <div className='flex flex-col items-center '>
 
             {/* Main Heading  */}
-            <div className='flex'>
+            {/* Rev */}
+            <div className='flex '>
                 {heading1.split("").map((char, idx) => (
                     <motion.h1
                         variants={fadeInAnimationVariant}
@@ -55,8 +56,6 @@ const Heading = () => {
                         animate={"animate"}
                         custom={idx}
                         key={idx}
-                        // trigger on last char of "Rev"
-
                         className="text-5xl md:text-7xl lg:text-8xl text-text-primary font-bebas font-bold uppercase tracking-wider text-shadow-3d"
                     >
                         {char}

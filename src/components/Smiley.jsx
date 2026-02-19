@@ -1,7 +1,6 @@
 import React from 'react'
 import smiley from '../assets/images/smiley_bg.png';
-import { easeIn, motion } from 'motion/react';
-import { delay } from 'motion';
+import { motion } from 'motion/react';
 
 const Smiley = ({directionOne , directionTwo}) => {
     
@@ -30,6 +29,8 @@ const Smiley = ({directionOne , directionTwo}) => {
                 initial="hidden"
                 animate="visible"
                 style={{ transformOrigin: "center center" }}
+                onAnimationStart={() => document.body.style.overflow = 'hidden'}
+                onAnimationComplete={() => document.body.style.overflow = 'unset'}
                 className={`absolute 
                 ${directionOne}-1/2 ${directionTwo}-5 -translate-x-1/2 
                 sm:${directionOne}-1/2 sm:${directionTwo}-5 sm:-translate-x-1/2 

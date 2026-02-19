@@ -18,7 +18,7 @@ const Button = () => {
             <div
                 onMouseEnter={() => setIsHover(true)}
                 onMouseLeave={() => setIsHover(false)}
-                className="relative overflow-hidden border-2 border-black">
+                className="relative overflow-hidden border-2 border-text-primary">
                 <button
                     className="relative cursor-pointer px-5 py-3 sm:px-8 sm:py-4 md:px-14 md:py-6 lg:px-20 lg:py-7 uppercase font-bebas text-shadow-3d text-white text-xl sm:text-2xl lg:text-4xl tracking-widest z-10 bg-transparent w-full">
                     Create my Rewind
