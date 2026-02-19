@@ -30,7 +30,7 @@ const StaticMarquee = () => {
             initial="hidden"
             animate="visible"
             style={{ transformOrigin: "center center" }}
-            className='text-shadow-white text-xl md:text-3xl lg:text-6xl py-4 font-extrabold font-bebas tracking-wider whitespace-nowrap w-full bg-yellow-400 absolute bottom-20 lg:bottom-10 overflow-hidden flex ' >
+            className='text-shadow-white text-xl md:text-3xl lg:text-6xl py-4 font-extrabold font-bebas tracking-wider whitespace-nowrap w-full bg-yellow-400 absolute bottom-20 lg:bottom-10 overflow-hidden flex'>
 
             {marqueeContent.map((marquee, idx) => (
                 <p key={idx} className='flex' >{marquee}&nbsp;</p>

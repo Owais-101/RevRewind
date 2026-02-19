@@ -1,12 +1,18 @@
 import React from 'react'
 import LandingPage from './pages/LandingPage'
+import Form from './pages/Form'
+import { Route, Routes } from 'react-router'
 
 
 const App = () => {
   return (
     <div>
 
-      <LandingPage />
+      <Routes>
+        <Route path='/' element={<LandingPage />} />
+        <Route path='/form' element={<Form />} />
+      </Routes>
+
 
     </div>
   )

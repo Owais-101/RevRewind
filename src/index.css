@@ -1,15 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
   /* PRIMARY FONT */
   --font-bebas: "Bebas Neue", sans-serif;
 
+  /* SECONDARY FONT */
+  --font-barlow: "Barlow", sans-serif;
+
   /* TEXT COLORS */
   --color-text-primary: #F6C515;
+
+  /* PRIMARY BACKGROUND COLOR */
+  --color-bg-primary: #0E5F5B;
 }
 
 @layer utilities {
+
   /* PRIMARY TEXT SHADOW */
   .text-shadow-3d {
     text-shadow: 1px 1px 0 #000,
@@ -19,6 +27,7 @@
       5px 5px 0 #000,
       6px 6px 0 #000;
   }
+
   .text-shadow-white {
     text-shadow: 1px 1px 0 #fff,
       2px 2px 0 #fff,

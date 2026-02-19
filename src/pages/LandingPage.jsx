@@ -9,7 +9,7 @@ const LandingPage = () => {
 
     return (
         <>
-            <main className=' relative h-screen w-full bg-[#0E5F5B] flex flex-col justify-center items-center'>
+            <main className=' relative h-screen w-full bg-bg-primary flex flex-col justify-center items-center'>
                 <Heading />
                 <div className='mt-20 sm:mt-24 md:mt-28 lg:mt-16'>
                     <Button />
