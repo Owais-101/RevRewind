@@ -2,16 +2,21 @@
 @import "tailwindcss";
 
 @theme {
-    --font-bebas: "Bebas Neue", sans-serif;
+  /* PRIMARY FONT */
+  --font-bebas: "Bebas Neue", sans-serif;
+
+  /* TEXT COLORS */
+  --color-text-primary: #F6C515;
 }
 
 @layer utilities {
+  /* PRIMARY TEXT SHADOW */
   .text-shadow-3d {
     text-shadow: 1px 1px 0 #000,
-                 2px 2px 0 #000,
-                 3px 3px 0 #000,
-                 4px 4px 0 #000,
-                 5px 5px 0 #000,
-                 6px 6px 0 #000;
+      2px 2px 0 #000,
+      3px 3px 0 #000,
+      4px 4px 0 #000,
+      5px 5px 0 #000,
+      6px 6px 0 #000;
   }
 }

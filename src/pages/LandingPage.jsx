@@ -1,6 +1,7 @@
 import React from 'react'
 import Heading from '../components/Heading'
 import Button from '../components/Button'
+import Circle from '../components/Circle'
 
 const LandingPage = () => {
     return (

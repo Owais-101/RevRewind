@@ -43,7 +43,7 @@ const Heading = () => {
     };
 
     return (
-        // Main Heading and Container Div
+        // Main Heading and Sub-Heading Container Div
         <div className='flex flex-col items-center '>
 
             {/* Main Heading  */}
@@ -57,7 +57,7 @@ const Heading = () => {
                         key={idx}
                         // trigger on last char of "Rev"
 
-                        className="text-5xl md:text-7xl lg:text-8xl text-[#F6C515] font-bebas font-bold uppercase tracking-wider text-shadow-3d"
+                        className="text-5xl md:text-7xl lg:text-8xl text-text-primary font-bebas font-bold uppercase tracking-wider text-shadow-3d"
                     >
                         {char}
                     </motion.h1>
@@ -84,7 +84,7 @@ const Heading = () => {
                         custom={idx + heading1.length}
                         onAnimationComplete={idx === heading2.length - 1 ? () => setShowDivider(true) : undefined}
                         key={idx}
-                        className="text-5xl md:text-7xl lg:text-8xl text-[#F6C515] font-bebas font-bold uppercase tracking-wider text-shadow-3d"
+                        className="text-5xl md:text-7xl lg:text-8xl text-text-primary font-bebas font-bold uppercase tracking-wider text-shadow-3d"
                     >
                         {char}
                     </motion.h1>
@@ -96,7 +96,7 @@ const Heading = () => {
                 variants={popUpAnimationVariant}
                 initial={'initial'}
                 animate={'animate'}
-                className='flex mt-4 border-2 shadow-[6px_6px_0px_0px_#000000] px-5 py-4'>
+                className='relative bg-amber-300 flex mt-4 border-2 shadow-[6px_6px_0px_0px_#000000] px-5 py-4'>
                 {subHeading.split("").map((char, idx) => (
                     <motion.h2
                         variants={fadeInAnimationVariant}
@@ -110,6 +110,8 @@ const Heading = () => {
                     </motion.h2>
                 ))}
             </motion.div>
+
+
 
         </div>
     )
