@@ -8,16 +8,20 @@ const LandingPage = () => {
 
     return (
         <>
+
+
+
             <main className=' relative h-screen w-full bg-bg-primary flex flex-col justify-center items-center'>
+
                 <Heading />
                 <div className='mt-20 sm:mt-24 md:mt-28 lg:mt-16'>
-                    <Button page={'/form'} />
+                    <Button page={'/form'} value={"CREATE MY REWIND"} />
                 </div>
             </main>
 
-            {/* Image*/}
-
             <StaticMarquee />
+            <StaticMarquee position="top" />
+
 
         </>
     )
