@@ -81,7 +81,7 @@ const Form = () => {
                 className='w-[90%] border-2 mx-auto mt-5 shadow-[5px_5px_0px_0px_#000000] lg:shadow-[10px_10px_0px_0px_#000000]'>
 
                 {/* BASIC DETAILS DIV */}
-                <div className='w-full py-5 mx-auto' >
+                {/* <div className='w-full py-5 mx-auto' >
                     <motion.h2
                         variants={fadeInAnimationVariant}
                         initial={"initial"}
@@ -171,10 +171,10 @@ const Form = () => {
 
                     </div>
 
-                </div>
+                </div> */}
 
                 {/* LIFELONG COMPANION DIV */}
-                <div className='w-full py-5 mx-auto' >
+                {/* <div className='w-full py-5 mx-auto' >
                     <motion.h2
                         variants={fadeInAnimationVariant}
                         initial={"initial"}
@@ -251,10 +251,10 @@ const Form = () => {
 
 
                     </div>
-                </div>
+                </div> */}
 
                 {/* The Road Counted Everything */}
-                <div className='w-full py-5 mx-auto' >
+                {/* <div className='w-full py-5 mx-auto' >
 
                     <motion.h2
                         variants={fadeInAnimationVariant}
@@ -334,10 +334,10 @@ const Form = () => {
 
                     </div>
 
-                </div>
+                </div> */}
 
                 {/* YEAR DEFINING MOMENTS */}
-                <div className='w-full py-5 mx-auto' >
+                {/* <div className='w-full py-5 mx-auto' >
 
                     <motion.h2
                         variants={fadeInAnimationVariant}
@@ -418,7 +418,7 @@ const Form = () => {
 
                     </div>
 
-                </div>
+                </div> */}
 
                 <div className='w-full py-5 mx-auto' >
 

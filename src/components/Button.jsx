@@ -28,7 +28,10 @@ const Button = ({ page, value, delay, type, link, isSubmitting }) => {
                     <button
                         type={type}
                         disabled={isSubmitting}
-                        className={`relative cursor-pointer px-5 py-3 lg:py-7 sm:px-8 sm:py-4 md:px-14 md:py-6 lg:px-20 uppercase font-bebas text-shadow-3d text-white text-xl sm:text-2xl ${delay === true ? 'lg:text-4xl' : 'lg:text-5xl'} tracking-widest z-10 bg-transparent w-full`}>
+                        className={`relative cursor-pointer 
+                        px-5 sm:px-8 md:px-14 lg:px-20
+                        py-3 sm:py-4 md:py-3 lg:py-5  
+                         uppercase font-bebas text-shadow-3d text-white text-xl sm:text-2xl ${delay === true ? 'lg:text-4xl' : 'lg:text-5xl'} tracking-widest z-10 bg-transparent w-full`}>
                         {isSubmitting ? "SUBMITTING..." : value}
                     </button>
 
