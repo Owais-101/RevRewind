@@ -1,10 +1,11 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { useNavigate } from 'react-router';
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
     const navigate = useNavigate();
+    const [user, setUser] = useState(null);
 
     const onSubmit = async (data) => {
 
@@ -27,6 +28,7 @@ export const UserProvider = ({ children }) => {
                 trimmedData.photo = reader.result;
                 localStorage.setItem('formData', JSON.stringify(trimmedData));
                 navigate('/confirmation');
+                setUser(trimmedData)
             };
 
             reader.readAsDataURL(photo);
@@ -38,7 +40,7 @@ export const UserProvider = ({ children }) => {
     };
 
     return (
-        <UserContext.Provider value={{ onSubmit }}>
+        <UserContext.Provider value={{ onSubmit, user }}>
             {children}
         </UserContext.Provider>
     );

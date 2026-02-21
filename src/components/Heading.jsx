@@ -8,7 +8,7 @@ import useAnimationVariants from '../hooks/useAnimationVariants';
 
 const Heading = () => {
 
-    const { fadeInAnimationVariant } = useAnimationVariants();
+    const { fadeInAnimationVariant, popUpAnimationVariant } = useAnimationVariants();
 
     const heading1 = "Rev";
     const heading2 = "Rewind"
@@ -17,20 +17,7 @@ const Heading = () => {
 
 
 
-    //Motion variant for the div holding subHeading
-    const popUpAnimationVariant = {
-        initial: {
-            opacity: 0,
-            y: 40
-        },
-        animate: {
-            opacity: 1,
-            y: 1,
-            transition: {
-                delay: 0.5
-            }
-        }
-    };
+
 
     return (
         // Main Heading and Sub-Heading Container Div

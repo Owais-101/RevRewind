@@ -19,8 +19,46 @@ const useAnimationVariants = () => {
 
     };
 
+    // Motion variant for static marquee pop-up animation
+    const StaticMarqueePopUpVariant = (delay = 0) => ({
+        hidden: {
+            opacity: 0,
+            y: 50
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                type: "spring",
+                stiffness: 500,
+                damping: 25,
+                delay: delay,
+            }
+        }
+    })
+
+    //Motion variant for the div holding subHeading
+    const popUpAnimationVariant = {
+        initial: {
+            opacity: 0,
+            y: 40
+        },
+        animate: {
+            opacity: 1,
+            y: 1,
+            transition: {
+                delay: 0.5
+            }
+        }
+    };
+
+    
+
+
     return {
-        fadeInAnimationVariant
+        fadeInAnimationVariant,
+        StaticMarqueePopUpVariant,
+        popUpAnimationVariant,
     }
 
 }

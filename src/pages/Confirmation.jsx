@@ -2,21 +2,25 @@ import React, { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import Button from '../components/Button'
 import useAnimationVariants from '../hooks/useAnimationVariants';
-
+import { useUser } from '../context/UserProvider';
 
 const Confirmation = () => {
-    const { fadeInAnimationVariant } = useAnimationVariants();
 
+    const { fadeInAnimationVariant, StaticMarqueePopUpVariant, } = useAnimationVariants();
+    const { user } = useUser();
     const [created, setCreated] = useState(false);
+    const headline = ["YOUR ", "REWIND ", "IS ", "READY ", "TO ", "GO "];
 
 
     useEffect(() => {
         const creating = async () => {
 
             // Fake delay to enhance user experience
-            await new Promise((resolve) => setTimeout(resolve, 5000));
+            await new Promise((resolve) => setTimeout(resolve, 2000));
             setCreated(!created)
         };
+
+        console.log(user);
 
         creating();
 
@@ -26,15 +30,36 @@ const Confirmation = () => {
     return (
         <div className='w-full h-screen bg-bg-primary flex flex-col justify-center items-center'>
 
-            <div className='' >
+            <div className='relative' >
                 <motion.h1
-                    variants={fadeInAnimationVariant}
-                    initial={"initial"}
-                    whileInView="whileInView"
-                    className='font-bebas text-3xl sm:text-6xl md:text-7xl lg:text-9xl  text-shadow-3d text-white' >{created ?
-                        <> <span className='text-yellow-500' >Owais <br /></span>
-                            your Rewind is ready to go </>
-                        : "Creating"}</motion.h1>
+                    className='font-bebas text-3xl sm:text-6xl md:text-7xl lg:text-9xl  text-shadow-3d text-white' >
+                    {created ?
+                        <>
+
+                            <motion.span
+                                variants={StaticMarqueePopUpVariant(0.2)}
+                                initial="hidden"
+                                animate="visible"
+                                className='text-yellow-500' >
+                                {user?.oneWord ? user.oneWord : "User"} <br />
+                            </motion.span>
+
+                            {headline.map((char, idx) => (
+                                <motion.span
+                                    key={idx}
+                                    variants={fadeInAnimationVariant}
+                                    initial="initial"
+                                    whileInView="whileInView"
+                                    custom={idx}>
+
+                                    {char}
+                                </motion.span>
+                            ))}
+                        </>
+                        :
+                        "Creating"}
+                </motion.h1>
+
                 <p className='text-xl md:text-2xl lg:text-3xl  font-semibold text-text-primary'>{!created && "Please Wait ..."} </p>
             </div>
 
