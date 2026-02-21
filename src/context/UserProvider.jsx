@@ -5,7 +5,10 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
     const navigate = useNavigate();
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(() => {
+    const saved = localStorage.getItem('formData');
+    return saved ? JSON.parse(saved) : null;
+});
 
     const onSubmit = async (data) => {
 
@@ -27,7 +30,6 @@ export const UserProvider = ({ children }) => {
             reader.onload = () => {
                 trimmedData.photo = reader.result;
                 localStorage.setItem('formData', JSON.stringify(trimmedData));
-                navigate('/confirmation');
                 setUser(trimmedData)
             };
 
@@ -35,8 +37,10 @@ export const UserProvider = ({ children }) => {
 
         } else {
             localStorage.setItem('formData', JSON.stringify(trimmedData));
+            setUser(trimmedData)
             console.log('✅ Saved without photo!', trimmedData);
         }
+        navigate('/confirmation');
     };
 
     return (

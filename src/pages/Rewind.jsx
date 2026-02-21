@@ -1,9 +1,25 @@
-import React from 'react'
-import RewindSection from '../components/RewindSection'
-import biker from '../assets/images/biker.png'
-import { motion } from 'motion/react'
+import React, { useState } from 'react';
+import RewindSection from '../components/RewindSection';
+import rider from '../assets/images/rider.png';
+import bike from '../assets/images/bike.png'
+import riding from '../assets/images/riding.png'
+import { motion } from 'motion/react';
+import { FaChevronDown } from "react-icons/fa";
+import { FaChevronUp } from "react-icons/fa";
+import ScrambleText from '../components/ScrambleText';
+import { useUser } from '../context/UserProvider';
+
+
+
+
+
+
 
 const Rewind = () => {
+    const [current, setCurrent] = useState(0);
+    const { user } = useUser();
+    console.log(user);
+    
     const handWaveAnimationVariant = {
         initial: {
             rotate: 0,
@@ -21,31 +37,88 @@ const Rewind = () => {
             }
         }
     };
+
+    const sections = [
+
+        // BASIC INFO 
+        <RewindSection imgSrc={rider} >
+            <span className='text-xl md:text-2xl lg:text-3xl font-sans text-text-primary uppercase'>
+                Meet
+                <motion.span
+                    variants={handWaveAnimationVariant}
+                    initial="initial"
+                    animate="animate"
+                    style={{ display: 'inline-block', originX: 0.7, originY: 0.7 }}
+                >
+                    &nbsp;👋
+                </motion.span>
+                <br />
+            </span>
+
+            <ScrambleText text={user?.fullName} trigger={true} />
+
+            <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary uppercase' ><span className='inline-block uppercase'><ScrambleText text={String(user?.age)} /></span> &nbsp; years old <br />
+            </span>
+
+            <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary uppercase '> hails from <span className='inline-block'><ScrambleText text={user?.place} /></span> </span>
+            <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary uppercase' > <br /> and lives for the open road.</span>
+        </RewindSection >,
+
+        // // BIKE INFO
+        <RewindSection imgSrc={bike} >
+
+            <span className='inline-block'><ScrambleText text={user?.bikeBrand} trigger={current} /> </span>
+            <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary uppercase' > &nbsp; that rides like a <br /> <span className='inline-block uppercase'>
+                <ScrambleText text={user?.bikeType} trigger={current} /></span> <br />
+            </span>
+            <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary uppercase ' >rules like a king <br /> </span>
+            <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary uppercase' >the streets had one name for it <br /> </span>
+            <span className='text-4xl md:text-6xl lg:text-7xl font-bebas text-white tracking-wider text-shadow-3d items-center inline-block '> <span className='inline-block'><ScrambleText text={user?.nickName} trigger={current} /></span> ... </span>
+
+        </RewindSection >,
+
+        // RIDING RELATED STATS
+        <RewindSection imgSrc={riding} >
+
+            <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary uppercase'><span className='inline-block'><ScrambleText text={String(user?.kmsRidden)} trigger={current} /></span> kilometers of scars, <br /> </span>
+            <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary uppercase'> <span className='inline-block'><ScrambleText text={String(user?.ridesTaken)} trigger={current} /></span> stories worth telling, <br /> </span>
+            <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary uppercase'> <span className='inline-block'><ScrambleText text={String(user?.longestRide)} trigger={current} /></span> km stretch that changed everything. </span>
+
+        </RewindSection >,
+    ]
+
+    let indexing = sections.length - 1;
+
     return (
         <>
-            <RewindSection imgSrc={biker} >
-                <span className='text-xl md:text-2xl lg:text-3xl font-sans text-text-primary'>
-                    Meet
-                    <motion.span
-                        variants={handWaveAnimationVariant}
-                        initial="initial"
-                        animate="animate"
-                        style={{ display: 'inline-block', originX: 0.7, originY: 0.7 }}
-                    >
-                        &nbsp;👋
-                    </motion.span>
-                    <br />
-                </span>
+            <div className="h-screen overflow-hidden relative">
+                <motion.div
+                    animate={{ y: `-${current * 100}vh` }}
+                    transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                    className="flex flex-col"
+                >
+                    {sections.map((section, i) => (
+                        <div key={i} className="h-screen">
+                            {section}
+                        </div>
+                    ))}
+                </motion.div>
 
-                <span className='text-4xl md:text-6xl font-bebas text-white tracking-wider text-shadow-3d flex items-center' >
-                    Prathamesh Chaudhary
-                </span>
+                {/* Button */}
+                {current < indexing &&
+                    <button onClick={() => setCurrent(prev => prev + 1)}
+                        className={`fixed bottom-10 right-10 z-50 bg-bg-primary border-2 outline-none text-text-primary p-3 flex justify-center items-center rounded-full font-bebas text-2xl md:text-3xl lg:text-4xl cursor-pointer hover:bg-text-primary hover:text-black transition-all`}>
+                        <FaChevronDown />
+                    </button>}
 
-                <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary' >a &nbsp; <span className='text-4xl md:text-6xl lg:text-7xl font-bebas text-white tracking-wider text-shadow-3d items-center '>22 &nbsp;</span> year old soul from ,  </span>
-                <span className='text-4xl md:text-6xl lg:text-7xl font-bebas text-white tracking-wider text-shadow-3d items-center '>Pune <br /></span>
-                <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary' >who lives for <span className='text-4xl md:text-6xl lg:text-7xl font-bebas text-white tracking-wider text-shadow-3d items-center '>Photography</span > <br /></span>
-                <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary' >and the open road. <br /> Every ride tells a story, this one will tell yours</span>
-            </RewindSection >
+                {current > 0 &&
+                    <button
+                        className={`fixed bottom-10 right-30 z-50 bg-bg-primary border-2 outline-none text-text-primary p-3 flex justify-center items-center rounded-full font-bebas text-2xl md:text-3xl lg:text-4xl cursor-pointer hover:bg-text-primary hover:text-black transition-all`}>
+                        <FaChevronUp onClick={() => setCurrent(prev => prev - 1)} />
+                    </button>
+                }
+            </div>
+
         </>
     )
 }

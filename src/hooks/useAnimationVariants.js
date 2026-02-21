@@ -52,9 +52,6 @@ const useAnimationVariants = () => {
         }
     };
 
-    
-
-
     return {
         fadeInAnimationVariant,
         StaticMarqueePopUpVariant,

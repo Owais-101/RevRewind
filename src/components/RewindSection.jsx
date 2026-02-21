@@ -1,9 +1,8 @@
 import React from 'react'
 import { motion } from 'motion/react'
-import biker from '../assets/images/biker.png'
 
 const Test = ({ imgSrc, children }) => {
-    
+
 
 
     return (
@@ -20,19 +19,16 @@ const Test = ({ imgSrc, children }) => {
             </div>
 
             {/* Image Div */}
-
-
-            {/* Image Div */}
             <motion.div
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
-                className='w-[90%] h-[49%] mx-auto flex justify-center items-center'
+                className='w-[90%] h-[49%] mx-auto flex justify-center relative '
             >
                 <motion.div
                     animate={{ y: [0, -12, 0] }}
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                    className='w-[70%] h-[90%] lg:w-full lg:h-full'
+                    className='w-[70%] h-[90%]   lg:w-full lg:h-full'
                 >
                     <motion.img
                         initial={{ filter: "drop-shadow(0px 0px 0px #F6C515)" }}
@@ -40,7 +36,7 @@ const Test = ({ imgSrc, children }) => {
                         transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
                         src={imgSrc}
                         alt="Biker"
-                        className='w-full h-full object-contain'
+                        className='w-full h-full object-contain absolute bottom-20'
                     />
                 </motion.div>
             </motion.div>

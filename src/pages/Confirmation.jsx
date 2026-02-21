@@ -41,7 +41,7 @@ const Confirmation = () => {
                                 initial="hidden"
                                 animate="visible"
                                 className='text-yellow-500' >
-                                {user?.oneWord ? user.oneWord : "User"} <br />
+                                {user?.fullName ? user.fullName : "User"} <br />
                             </motion.span>
 
                             {headline.map((char, idx) => (
@@ -64,7 +64,7 @@ const Confirmation = () => {
             </div>
 
             <div className='mt-10 md:mt-16 lg:mt-24'>
-                {created && <Button value={'Lets Go'} page={'/test'} link={true} />}
+                {created && <Button value={'Lets Go'} page={'/rewind'} link={true} />}
             </div>
 
         </div>

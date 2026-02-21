@@ -150,31 +150,13 @@ const Form = () => {
                             {errors.place && (<p className='text-white  outline-black'>{errors.place.message}</p>)}
                         </div>
 
-                        <div className='flex flex-col my-5 w-[90%] mx-auto' >
-                            <label className='font-semibold font-sans uppercase text-text-primary mb-1'
-                                htmlFor="full_name">
-                                Hobby
-                            </label>
-                            <input
-                                {...register("hobby", {
-                                    required: { value: true, message: "field required*" },
-                                    minLength: { value: 4, message: "hobby must be more than 4 alphabets" },
-                                    maxLength: { value: 20, message: "hobby must be below 20 alphabets" },
-                                    pattern: { value: /^[A-Za-z\s]+$/i, message: "only alphabets are allowed" }
-                                })}
-                                className='py-2 px-3 border border-black w-full mx-auto bg-[#082e2c] text-[#e0f5f4] rounded-md'
-                                type="text"
-                                id='hobby'
-                                name='hobby' placeholder='What is your hobby ' />
-                            {errors.hobby && (<p className='text-white  outline-black'>{errors.hobby.message}</p>)}
-                        </div>
-
+                        
                     </div>
 
-                </div> 
+                </div>  
 
                 {/* LIFELONG COMPANION DIV */}
-                {/* <div className='w-full py-5 mx-auto' >
+                <div className='w-full py-5 mx-auto' >
                     <motion.h2
                         variants={fadeInAnimationVariant}
                         initial={"initial"}
@@ -192,7 +174,7 @@ const Form = () => {
                                     required: { value: true, message: "field required*" },
                                 })}
                                 className="py-2 px-3 border border-black w-full mx-auto bg-[#082e2c] text-[#e0f5f4] rounded-md">
-                                <option>
+                                <option value="">
                                     Select your bike type
                                 </option>
                                 {bikeTypes.map((type) => (
@@ -237,7 +219,7 @@ const Form = () => {
                                     required: { value: true, message: "field required*" },
                                 })}
                                 className="py-2 px-3 border border-black w-full mx-auto bg-[#082e2c] text-[#e0f5f4] rounded-md">
-                                <option>
+                                <option value="">
                                     Select your bike brand
                                 </option>
                                 {bikeBrands.map((type) => (
@@ -251,10 +233,10 @@ const Form = () => {
 
 
                     </div>
-                </div> */}
+                </div>
 
                 {/* The Road Counted Everything */}
-                {/* <div className='w-full py-5 mx-auto' >
+                <div className='w-full py-5 mx-auto' >
 
                     <motion.h2
                         variants={fadeInAnimationVariant}
@@ -334,7 +316,7 @@ const Form = () => {
 
                     </div>
 
-                </div> */}
+                </div>
 
                 {/* YEAR DEFINING MOMENTS */}
                 {/* <div className='w-full py-5 mx-auto' >
@@ -420,7 +402,8 @@ const Form = () => {
 
                 </div> */}
 
-                <div className='w-full py-5 mx-auto' >
+                {/* BEFORE YOU REV OUT */}
+                {/* <div className='w-full py-5 mx-auto' >
 
                     <motion.h2
                         variants={fadeInAnimationVariant}
@@ -480,7 +463,7 @@ const Form = () => {
 
                     </div>
 
-                </div>
+                </div> */}
 
                 <div className=' w-[30%] mx-auto mb-3 sm:my:5 md:my-6 lg:my-8 flex justify-center items-center'>
                     <Button value="SUBMIT" delay={false} type="submit" isSubmitting={isSubmitting} />
