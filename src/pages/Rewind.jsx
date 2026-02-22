@@ -2,12 +2,19 @@ import React, { useState } from 'react';
 import RewindSection from '../components/RewindSection';
 import rider from '../assets/images/rider.png';
 import bike from '../assets/images/bike.png'
+import love from '../assets/images/love.png'
 import riding from '../assets/images/riding.png'
 import { motion } from 'motion/react';
 import { FaChevronDown } from "react-icons/fa";
 import { FaChevronUp } from "react-icons/fa";
 import ScrambleText from '../components/ScrambleText';
 import { useUser } from '../context/UserProvider';
+import Button from '../components/Button';
+import Audio from '../components/Audio';
+import { FaPlayCircle } from "react-icons/fa";
+import { FaPauseCircle } from "react-icons/fa";
+
+
 
 
 
@@ -17,9 +24,8 @@ import { useUser } from '../context/UserProvider';
 
 const Rewind = () => {
     const [current, setCurrent] = useState(0);
-    const { user } = useUser();
-    console.log(user);
-    
+    const { user, setAudio, audio } = useUser();
+
     const handWaveAnimationVariant = {
         initial: {
             rotate: 0,
@@ -85,12 +91,32 @@ const Rewind = () => {
             <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary uppercase'> <span className='inline-block'><ScrambleText text={String(user?.longestRide)} trigger={current} /></span> km stretch that changed everything. </span>
 
         </RewindSection >,
+
+        // RIDES RELATED FAV,HARDEST
+        <RewindSection imgSrc={love} >
+
+            <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary uppercase'><span className='inline-block'><ScrambleText text={user?.favRide} trigger={current} /></span> softened him, <br /> </span>
+            <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary uppercase'> <span className='inline-block'><ScrambleText text={user?.hardestRide} trigger={current} /></span> &nbsp; ? that was a war, and he won.  <br /> </span>
+
+
+        </RewindSection >,
+
+        // ONE WORD 
+        <RewindSection imgSrc={user?.photo} summary={true} >
+
+            <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary uppercase'> if this year had a name, it would be <br /> </span>
+            <span className='inline-block'><ScrambleText text={user?.oneWord} trigger={current} /></span>
+
+        </RewindSection >,
+
+
     ]
 
     let indexing = sections.length - 1;
 
     return (
         <>
+            <Audio />
             <div className="h-screen overflow-hidden relative">
                 <motion.div
                     animate={{ y: `-${current * 100}vh` }}
@@ -113,11 +139,26 @@ const Rewind = () => {
 
                 {current > 0 &&
                     <button
-                        className={`fixed bottom-10 right-30 z-50 bg-bg-primary border-2 outline-none text-text-primary p-3 flex justify-center items-center rounded-full font-bebas text-2xl md:text-3xl lg:text-4xl cursor-pointer hover:bg-text-primary hover:text-black transition-all`}>
+                        className={`fixed bottom-10 right-25 md:right-27 lg:right-30 z-50 bg-bg-primary border-2 outline-none text-text-primary p-3 flex justify-center items-center rounded-full font-bebas text-2xl md:text-3xl lg:text-4xl cursor-pointer hover:bg-text-primary hover:text-black transition-all`}>
                         <FaChevronUp onClick={() => setCurrent(prev => prev - 1)} />
                     </button>
                 }
+
+                {!audio &&
+                    <button onClick={() => setAudio(prev => !prev)}
+                        className={`fixed bottom-10 right-55 md:right-58 lg:right-62 z-50 bg-bg-primary border-2 outline-none text-text-primary p-3 flex justify-center items-center rounded-full font-bebas text-2xl md:text-3xl lg:text-4xl cursor-pointer hover:bg-text-primary hover:text-black transition-all`}>
+                        <FaPlayCircle />
+                    </button>}
+
+                {audio &&
+                    <button onClick={() => setAudio(prev => !prev)}
+                        className={`fixed bottom-10 right-55 md:right-58 lg:right-62 z-50 bg-bg-primary border-2 outline-none text-text-primary p-3 flex justify-center items-center rounded-full font-bebas text-2xl md:text-3xl lg:text-4xl cursor-pointer hover:bg-text-primary hover:text-black transition-all`}>
+                        <FaPauseCircle />
+                    </button>}
+
             </div>
+
+
 
         </>
     )

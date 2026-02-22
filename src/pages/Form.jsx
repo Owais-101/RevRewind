@@ -319,7 +319,7 @@ const Form = () => {
                 </div>
 
                 {/* YEAR DEFINING MOMENTS */}
-                {/* <div className='w-full py-5 mx-auto' >
+                <div className='w-full py-5 mx-auto' >
 
                     <motion.h2
                         variants={fadeInAnimationVariant}
@@ -344,7 +344,7 @@ const Form = () => {
                                         required: { value: true, message: "field required*" },
                                         minLength: { value: 4, message: "must be above 4 alphabets" },
                                         maxLength: { value: 20, message: "must be below 20 alphabets" },
-                                        pattern: { value: /^[A-Za-z\s]+$/i, message: "only alphabets are allowed" }
+                                        pattern: { value: /^[A-Za-z ]+$/, message: "only alphabets are allowed" }
                                     })}
                                 className='py-2 px-3 border border-black w-full mx-auto bg-[#082e2c] text-[#e0f5f4] rounded-md'
                                 type="text"
@@ -374,36 +374,12 @@ const Form = () => {
                             {errors.hardestRide && (<p className='text-white  outline-black'>{errors.hardestRide.message}</p>)}
                         </div>
 
-                        <div className='flex flex-col my-5 w-[90%] mx-auto' >
-                            <label
-                                className='font-semibold font-sans uppercase text-text-primary mb-1'
-                                htmlFor="full_name">
-                                FAVOUTITE LOCATION
-                            </label>
-                            <input
-                                {...register("favLocation",
-                                    {
-                                        required: { value: true, message: "field required*" },
-                                        minLength: { value: 4, message: "must be above 4 alphabets" },
-                                        maxLength: { value: 20, message: "must be below 20 alphabets" },
-                                        pattern: { value: /^[A-Za-z\s]+$/i, message: "only alphabets are allowed" }
-                                    })}
-                                className='py-2 px-3 border border-black w-full mx-auto bg-[#082e2c] text-[#e0f5f4] rounded-md'
-                                type="text"
-                                id='favLocation'
-                                name='favLocation'
-                                placeholder='Favourite Location of the Year'
-                            />
-                            {errors.favLocation && (<p className='text-white  outline-black'>{errors.favLocation.message}</p>)}
-                        </div>
-
-
                     </div>
 
-                </div> */}
+                </div>
 
                 {/* BEFORE YOU REV OUT */}
-                {/* <div className='w-full py-5 mx-auto' >
+                <div className='w-full py-5 mx-auto' >
 
                     <motion.h2
                         variants={fadeInAnimationVariant}
@@ -463,7 +439,7 @@ const Form = () => {
 
                     </div>
 
-                </div> */}
+                </div>
 
                 <div className=' w-[30%] mx-auto mb-3 sm:my:5 md:my-6 lg:my-8 flex justify-center items-center'>
                     <Button value="SUBMIT" delay={false} type="submit" isSubmitting={isSubmitting} />

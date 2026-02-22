@@ -3,24 +3,22 @@ import { motion } from 'motion/react'
 import Button from '../components/Button'
 import useAnimationVariants from '../hooks/useAnimationVariants';
 import { useUser } from '../context/UserProvider';
+import Audio from '../components/Audio';
 
 const Confirmation = () => {
 
     const { fadeInAnimationVariant, StaticMarqueePopUpVariant, } = useAnimationVariants();
-    const { user } = useUser();
+    const { user, setAudio } = useUser();
     const [created, setCreated] = useState(false);
     const headline = ["YOUR ", "REWIND ", "IS ", "READY ", "TO ", "GO "];
 
 
     useEffect(() => {
         const creating = async () => {
-
             // Fake delay to enhance user experience
             await new Promise((resolve) => setTimeout(resolve, 2000));
             setCreated(!created)
         };
-
-        console.log(user);
 
         creating();
 
@@ -63,7 +61,9 @@ const Confirmation = () => {
                 <p className='text-xl md:text-2xl lg:text-3xl  font-semibold text-text-primary'>{!created && "Please Wait ..."} </p>
             </div>
 
-            <div className='mt-10 md:mt-16 lg:mt-24'>
+            <div
+                onClick={() => setAudio(prev => !prev)}
+                className='mt-10 md:mt-16 lg:mt-24'>
                 {created && <Button value={'Lets Go'} page={'/rewind'} link={true} />}
             </div>
 

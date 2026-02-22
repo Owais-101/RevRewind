@@ -5,10 +5,13 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
     const navigate = useNavigate();
+
     const [user, setUser] = useState(() => {
-    const saved = localStorage.getItem('formData');
-    return saved ? JSON.parse(saved) : null;
-});
+        const saved = localStorage.getItem('formData');
+        return saved ? JSON.parse(saved) : null;
+    });
+
+    const [audio, setAudio] = useState(false);
 
     const onSubmit = async (data) => {
 
@@ -44,7 +47,7 @@ export const UserProvider = ({ children }) => {
     };
 
     return (
-        <UserContext.Provider value={{ onSubmit, user }}>
+        <UserContext.Provider value={{ onSubmit, user, setAudio, audio }}>
             {children}
         </UserContext.Provider>
     );
