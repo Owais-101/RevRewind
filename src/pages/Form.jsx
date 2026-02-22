@@ -37,7 +37,7 @@ const Form = () => {
         "Jawa",
         "Yezdi",
         "Triumph",
-        "Harley-Davidson",
+        "Harley Davidson",
         "BMW Motorrad",
         "Ducati",
         "Aprilia",
