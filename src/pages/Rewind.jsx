@@ -9,10 +9,10 @@ import { FaChevronDown } from "react-icons/fa";
 import { FaChevronUp } from "react-icons/fa";
 import ScrambleText from '../components/ScrambleText';
 import { useUser } from '../context/UserProvider';
-import Button from '../components/Button';
 import Audio from '../components/Audio';
 import { FaPlayCircle } from "react-icons/fa";
 import { FaPauseCircle } from "react-icons/fa";
+import summer from '../assets/audio/summer.mp3'
 
 
 
@@ -116,7 +116,7 @@ const Rewind = () => {
 
     return (
         <>
-            <Audio />
+            <Audio rewindAudio={summer} />
             <div className="h-screen overflow-hidden relative">
                 <motion.div
                     animate={{ y: `-${current * 100}vh` }}

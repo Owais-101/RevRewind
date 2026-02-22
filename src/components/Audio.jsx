@@ -1,27 +1,29 @@
 import React, { useEffect } from 'react'
 import { useRef } from 'react'
-import summer from '../assets/audio/summer.mp3'
 import { useUser } from '../context/UserProvider'
 
-const Audio = () => {
+const Audio = ({ rewindAudio , summaryAudio }) => {
 
     const { audio } = useUser()
-    const audioRef = useRef()
+    const rewindAudioRef = useRef()
+    const summaryAudioRef = useRef()
 
     useEffect(() => {
-        console.log("useEffect chala", audio);
         if (audio) {
-            audioRef.current.play();
+            rewindAudioRef.current.play();
         } else {
-            audioRef.current.pause();
+            rewindAudioRef.current.pause();
         }
+
+        summaryAudioRef.current.play();
     }, [audio]);
 
 
     return (
         <div>
 
-            <audio ref={audioRef} src={summer}></audio>
+            <audio ref={rewindAudioRef} src={rewindAudio}></audio>
+            <audio ref={summaryAudioRef} src={summaryAudio}></audio>
 
         </div>
     )
