@@ -6,6 +6,9 @@ import Confirmation from './pages/Confirmation'
 import RewindSection from './components/RewindSection'
 import Rewind from './pages/Rewind'
 import Summary from './pages/Summary'
+import ProtectedRoute from './components/ProtectedRoute'
+import NotFound from './pages/NotFound'
+
 
 
 const App = () => {
@@ -14,9 +17,16 @@ const App = () => {
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/form' element={<Form />} />
-        <Route path='/confirmation' element={<Confirmation />} />
-        <Route path='/rewind' element={<Rewind />} />
-        <Route path='/summary' element={<Summary />} />
+        <Route path='/confirmation' element={
+          <ProtectedRoute><Confirmation /></ProtectedRoute>
+        } />
+        <Route path='/rewind' element={
+          <ProtectedRoute><Rewind /></ProtectedRoute>
+        } />
+        <Route path='/summary' element={
+          <ProtectedRoute><Summary /></ProtectedRoute>
+        } />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
   )

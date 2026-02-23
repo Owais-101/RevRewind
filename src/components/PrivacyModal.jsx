@@ -38,11 +38,12 @@ const PrivacyModal = () => {
             {isOpen && (
                 <div
                     onClick={() => setIsOpen(false)}
-                    className='fixed h-screen inset-0 bg-black/70 flex items-center justify-center z-[999]'
+                    className='fixed h-screen inset-0 bg-black/70 flex items-center justify-center z-999'
                 >
                     <div
                         onClick={(e) => e.stopPropagation()}
-                        className='bg-gradient-to-br from-[#0E5F5B] to-[#0a4a46] border-2 border-[#F6C515]/40 rounded-xl p-8 max-w-[420px] w-[90%] shadow-[6px_6px_0px_0px_#000]'
+                        className='bg-linear-to-br from-bg-primary to-[#0a4a46] border-2 border-bg-primary/40 rounded-xl p-8 max-w-105
+                         w-[90%] shadow-[6px_6px_0px_0px_#000]'
                     >
                         {/* Icon */}
                         <p className='text-4xl text-center mb-3'>🔒</p>
