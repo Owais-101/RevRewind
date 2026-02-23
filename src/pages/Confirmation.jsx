@@ -3,7 +3,6 @@ import { motion } from 'motion/react'
 import Button from '../components/Button'
 import useAnimationVariants from '../hooks/useAnimationVariants';
 import { useUser } from '../context/UserProvider';
-import Audio from '../components/Audio';
 
 const Confirmation = () => {
 

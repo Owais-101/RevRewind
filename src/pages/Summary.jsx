@@ -20,7 +20,7 @@ const Summary = () => {
   return (
     <div className='w-full py-10 bg-bg-primary flex flex-col items-center justify-center' >
 
-      <div className='w-[90%] md:w-[70%] lg:w-[60%] h-fit py-5 bg-linear-to-br from-bg-primary to-[#0a4a46] rounded-xl px-6 border-2 border-text-primary shadow-[7px_7px_0px_0px_#000000] lg:shadow-[15px_15px_0px_0px_#000000] flex flex-col gap-3 md:gap-4 lg:gap-6'>
+      <div className='w-[90%] md:w-[55%] lg:w-[45%] h-fit py-5 bg-linear-to-br from-bg-primary to-[#0a4a46] rounded-xl px-6 border-2 border-text-primary shadow-[7px_7px_0px_0px_#000000] lg:shadow-[15px_15px_0px_0px_#000000] flex flex-col gap-3 md:gap-4 lg:gap-6'>
 
         {/* Header */}
         <div className='flex justify-between items-center'>
