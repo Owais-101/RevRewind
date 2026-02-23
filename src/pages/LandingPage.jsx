@@ -12,10 +12,10 @@ const LandingPage = () => {
                 <div className='mt-20 sm:mt-24 md:mt-28 lg:mt-16'>
                     <Button page={'/form'} value={"CREATE MY REWIND"} link={true} />
                 </div>
-            </main>
-
             <StaticMarquee />
             <StaticMarquee position="top" />
+            </main>
+
 
 
         </>
