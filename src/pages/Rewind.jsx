@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 import RewindSection from '../components/RewindSection';
-import rider from '../assets/images/rider.png';
-import bike from '../assets/images/bike.png'
-import love from '../assets/images/love.png'
-import riding from '../assets/images/riding.png'
 import { motion } from 'motion/react';
 import { FaChevronDown } from "react-icons/fa";
 import { FaChevronUp } from "react-icons/fa";
@@ -13,13 +9,6 @@ import Audio from '../components/Audio';
 import { FaPlayCircle } from "react-icons/fa";
 import { FaPauseCircle } from "react-icons/fa";
 import summer from '../assets/audio/summer.mp3'
-
-
-
-
-
-
-
 
 
 const Rewind = () => {
@@ -47,7 +36,7 @@ const Rewind = () => {
     const sections = [
 
         // BASIC INFO 
-        <RewindSection imgSrc={rider} >
+        <RewindSection >
             <span className='text-xl md:text-2xl lg:text-3xl font-sans text-text-primary uppercase'>
                 Meet
                 <motion.span
@@ -71,7 +60,7 @@ const Rewind = () => {
         </RewindSection >,
 
         // // BIKE INFO
-        <RewindSection imgSrc={bike} >
+        <RewindSection >
 
             <span className='inline-block'><ScrambleText text={user?.bikeBrand} trigger={current} /> </span>
             <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary uppercase' > &nbsp; that rides like a <br /> <span className='inline-block uppercase'>
@@ -84,7 +73,7 @@ const Rewind = () => {
         </RewindSection >,
 
         // RIDING RELATED STATS
-        <RewindSection imgSrc={riding} >
+        <RewindSection >
 
             <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary uppercase'><span className='inline-block'><ScrambleText text={String(user?.kmsRidden)} trigger={current} /></span> kilometers of scars, <br /> </span>
             <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary uppercase'> <span className='inline-block'><ScrambleText text={String(user?.ridesTaken)} trigger={current} /></span> stories worth telling, <br /> </span>
@@ -93,16 +82,15 @@ const Rewind = () => {
         </RewindSection >,
 
         // RIDES RELATED FAV,HARDEST
-        <RewindSection imgSrc={love} >
+        <RewindSection >
 
             <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary uppercase'><span className='inline-block'><ScrambleText text={user?.favRide} trigger={current} /></span> softened him, <br /> </span>
-            <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary uppercase'> <span className='inline-block'><ScrambleText text={user?.hardestRide} trigger={current} /></span> &nbsp; ? that was a war, and he won.  <br /> </span>
-
+            <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary uppercase'> <span className='inline-block'><ScrambleText text={user?.hardestRide} trigger={current} /></span> ? &nbsp; that was a war, and he won.  <br /> </span>
 
         </RewindSection >,
 
         // ONE WORD 
-        <RewindSection imgSrc={user?.photo} summary={true} >
+        <RewindSection summary={true}  >
 
             <span className='text-xl md:text-2xl lg:text-4xl font-sans text-text-primary uppercase'> if this year had a name, it would be <br /> </span>
             <span className='inline-block'><ScrambleText text={user?.oneWord} trigger={current} /></span>

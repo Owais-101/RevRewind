@@ -1,104 +1,101 @@
-import React, { useEffect, useState } from 'react';
-import { useWindowSize } from 'react-use';
-import Confetti from 'react-confetti';
-import Audio from '../components/Audio';
-import yay from '../assets/audio/yay.mp3';
-import ride from '../assets/images/ride.png';
+import React, { use, useRef } from 'react'
+import rider from '../assets/images/rider.jpg'
+import { useUser } from '../context/UserProvider';
+import PrivacyModal from '../components/PrivacyModal';
+
+
 
 const Summary = () => {
-  const [pieces, setPieces] = useState(300);
-  const { width, height } = useWindowSize();
 
-  useEffect(() => {
-    const timer = setTimeout(() => setPieces(0), 5000);
-    return () => clearTimeout(timer);
-  }, []);
+  const { user } = useUser();
+  console.log(user);
+  
+
+  // Array for riding stats sections beacuse its repeatitive.
+  const { favRide, hardestRide, longestRide } = user;
+  const rides = [
+    { label: 'Favourite', value: favRide },
+    { label: 'Hardest', value: hardestRide },
+    { label: 'Longest', value: longestRide },
+  ]
 
   return (
-    <>
-      <Audio summaryAudio={yay} />
-      <Confetti numberOfPieces={pieces} width={width} height={height} />
+    <div className='w-full py-10 bg-bg-primary flex flex-col items-center justify-center' >
 
-      <div className="min-h-screen w-full flex flex-col items-center justify-between bg-bg-primary px-3 sm:px-4 md:px-6 lg:px-8 py-6 md:py-8 overflow-hidden">
-        {/* HEADING */}
-        <div className="flex flex-col items-center text-center w-full max-w-5xl">
-          <h2 className="font-sans font-bold uppercase tracking-wide text-xs sm:text-sm md:text-base lg:text-xl text-white">
-            your 2025 rewind
-          </h2>
-          <h1 className="font-bebas mt-1 sm:mt-2 text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-shadow-3d text-text-primary leading-tight">
-            congratulations
-          </h1>
-          <p className="font-bebas mt-2 sm:mt-3 md:mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-shadow-3d text-text-primary">
-            summary
-          </p>
-        </div>
+      {
 
-        {/* CARD */}
-        <div className="mt-6 md:mt-8 w-full max-w-6xl lg:max-w-7xl flex flex-col md:flex-row border-2 border-black shadow-[6px_6px_0px_0px_#000000] md:shadow-[8px_8px_0px_0px_#000000] overflow-hidden rounded-lg bg-black/30 backdrop-blur-sm flex-1">
-          {/* IMAGE */}
-          <div className="w-full md:w-2/5 lg:w-5/12 h-64 sm:h-80 md:h-auto relative shrink-0 overflow-hidden">
-            <img
-              src={ride}
-              alt="rider"
-              className="object-cover w-full h-full"
-            />
-            <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(0,0,0,0.7)]" />
-          </div>
+       !user 
+          ?
+          <h1>User is null</h1>
+          :
+          <div className='w-[90%] md:w-[70%] lg:w-[60%] h-fit py-5 bg-linear-to-br from-bg-primary to-[#0a4a46] rounded-xl px-6 border-2 border-text-primary shadow-[7px_7px_0px_0px_#000000] lg:shadow-[15px_15px_0px_0px_#000000] flex flex-col gap-3 md:gap-4 lg:gap-6'>
 
-          {/* CONTENT */}
-          <div className="w-full md:w-3/5 lg:w-7/12 flex flex-col justify-center gap-5 sm:gap-6 md:gap-8 lg:gap-10 px-4 sm:px-6 md:px-8 lg:px-10 py-6 md:py-8 lg:py-10 overflow-hidden">
-            {[
-              [
-                { label: 'Name', value: 'Owais' },
-                { label: 'Age', value: '25', align: 'text-right' },
-              ],
-              [
-                { label: 'Nickname', value: '42 fj' },
-                { label: 'Brand', value: 'Harley Davidson', align: 'text-right' },
-              ],
-              [
-                { label: 'Total km', value: '2000km' },
-                { label: 'Longest', value: '1000km', align: 'text-right' },
-              ],
-              [
-                { label: 'Fav ride', value: '42 fj' },
-                { label: 'Hard ride', value: 'Harley Davidson', align: 'text-right' },
-              ],
-              [
-                { label: 'The word', value: 'fabulous' },
-                { label: 'Fav location', value: 'hero', align: 'text-right' },
-              ],
-            ].map((pair, index) => (
-              <div
-                key={index}
-                className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-10 min-w-0"
-              >
-                <div className="min-w-0">
-                  <h3 className="font-sans font-medium uppercase text-[10px] sm:text-xs md:text-sm lg:text-base text-white/90 tracking-wider truncate">
-                    {pair[0].label}
-                  </h3>
-                  <p className="font-bebas text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-shadow-3d text-text-primary mt-0.5 sm:mt-1 truncate">
-                    {pair[0].value}
-                  </p>
-                </div>
-
-                <div className={`min-w-0 ${pair[1].align || ''}`}>
-                  <h3 className="font-sans font-medium uppercase text-[10px] sm:text-xs md:text-sm lg:text-base text-white/90 tracking-wider truncate">
-                    {pair[1].label}
-                  </h3>
-                  <p className="font-bebas text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-shadow-3d text-text-primary mt-0.5 sm:mt-1 truncate">
-                    {pair[1].value}
-                  </p>
-                </div>
+            {/* Header */}
+            <div className='flex justify-between items-center'>
+              <div>
+                <p className='font-bebas text-2xl md:text-4xl lg:text-6xl text-text-primary text-shadow-3d'>Rider &nbsp; Rewind</p>
+                <p className='font-bebas text-4xl md:text-6xl lg:text-8xl tracking-widest text-white'>2025</p>
               </div>
-            ))}
+
+              <div className='w-22 h-22 md:w-28 md:h-28 lg:w-36 lg:h-36 bg-black border-2 border-text-primary rounded-full overflow-hidden shadow-[0_0_15px_rgba(246,197,21,0.5)]'>
+                <img className='w-full h-full object-cover' src={user?.photo} alt="" />
+              </div>
+            </div>
+
+            {/* Name & Age */}
+            <div className='border-t-2 border-t-text-primary/25 pt-3 md:pt-4 lg:pt-6'>
+              <h1 className='text-2xl md:text-3xl lg:text-4xl font-bebas tracking-wider text-shadow-3d text-text-primary'>{user?.fullName}</h1>
+              <div className='text-white text-base md:text-lg lg:text-xl'>
+                <p>{user?.age} years old, <span className='text-text-primary'>&nbsp;{user?.nickName}</span></p>
+              </div>
+            </div>
+
+            {/* Total KMs */}
+            <div className='border-t-2 border-t-text-primary/25 pt-3 md:pt-4 lg:pt-6 flex flex-col items-center'>
+              <p className='text-base md:text-xl lg:text-2xl text-white'>Total Ridden</p>
+              <h1 className='text-5xl md:text-7xl lg:text-9xl font-bebas text-shadow-3d text-text-primary tracking-wider'>{user?.kmsRidden}</h1>
+              <p className='uppercase text-yellow-400 font-sans text-sm md:text-lg lg:text-xl'>kilometers ...</p>
+            </div>
+
+            {/* 3 Rides */}
+            <div className='border-t-2 border-t-text-primary/25 pt-3 md:pt-4 lg:pt-6 flex justify-between items-stretch overflow-hidden'>
+              {rides.map((label, i) => (
+                <div key={i} className='w-[30%] text-center border border-text-primary py-3 px-2 rounded-lg'>
+                  <p className='uppercase text-text-primary text-sm md:text-xl lg:text-2xl font-bebas tracking-widest '>{label.label}</p>
+                  <h2 className='font-bebas text-white line-clamp-2 wrap-break-word md:text-2xl lg:text-3xl'>{label.value}</h2>
+                </div>
+              ))}
+            </div>
+
+            {/* Bike & Hobby */}
+            <div className='border-t-2 border-t-text-primary/25 pt-3 md:pt-4 lg:pt-6 flex justify-between items-stretch overflow-hidden'>
+              <div className='w-[48%] text-center border border-text-primary py-3 px-2 rounded-lg'>
+                <p className='uppercase text-text-primary text-sm md:text-xl lg:text-2xl font-bebas tracking-widest'>partner in crime</p>
+                <h2 className='font-bebas text-white line-clamp-2 wrap-break-word md:text-2xl lg:text-3xl'>{user?.bikeBrand}</h2>
+                <p className='text-[rgba(255,255,255,0.4)] text-sm md:text-lg lg:text-xl'>{user?.bikeType}</p>
+              </div>
+
+              <div className='w-[48%] text-center border border-text-primary py-3 px-2 rounded-lg'>
+                <p className='uppercase text-text-primary text-sm md:text-xl lg:text-2xl font-bebas tracking-widest'>lives for</p>
+                <h2 className='font-bebas text-white line-clamp-2 wrap-break-word md:text-2xl lg:text-3xl'>Bike Riding</h2>
+                <p className='text-[rgba(255,255,255,1)] text-sm md:text-lg lg:text-xl'>💛</p>
+              </div>
+            </div>
+
+            {/* Footer Quote */}
+            <div className='border-t-2 border-t-text-primary/25 pt-3 md:pt-4 lg:pt-6'>
+              <h1 className='text-md md:text-2xl lg:text-4xl font-bebas text-text-primary'>dont ever stop riding </h1>
+            </div>
+
           </div>
-        </div>
 
-        <div className="h-8 md:h-12" />
-      </div>
-    </>
-  );
-};
+      }
 
-export default Summary;
+
+      <PrivacyModal />
+
+    </div>
+  )
+}
+
+export default Summary

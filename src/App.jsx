@@ -18,8 +18,6 @@ const App = () => {
         <Route path='/rewind' element={<Rewind />} />
         <Route path='/summary' element={<Summary />} />
       </Routes>
-
-
     </div>
   )
 }
